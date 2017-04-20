@@ -1,12 +1,12 @@
 # 说明
-程序修改自https://github.com/Hironsan/BossSensor.git,用来自己测试一下
+程序修改自https://github.com/Hironsan/BossSensor.git, 用来自己测试一下
 
 # 环境
-本程序可以在python2.7下跑通,有些警告,但是可以运行.
-照片采集使用笔记本自带摄像头(效果不好~~)
-tensorflow:0.12
-需要安装opencv,hdf5,keras等,keras后端使用tensorflow
-使用os:ubuntu15.04
+1. 本程序可以在python2.7下跑通,有些警告,但是可以运行.
+2. 照片采集使用笔记本自带摄像头(效果不好~~)
+3. tensorflow版本:0.12
+4. 需要安装opencv,hdf5,keras等,keras后端使用tensorflow
+5. 使用os:ubuntu15.04
 
 
 # 程序说明

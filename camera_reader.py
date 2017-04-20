@@ -29,7 +29,7 @@ def saveFaces(image_name):
     if faces:
         #将人脸保存在save_dir目录下。
         #Image模块：Image.open获取图像句柄，crop剪切图像(剪切的区域就是detectFaces返回的坐标)，save保存。
-        save_dir = "test/_faces/"
+        save_dir = "read_pic/_faces/"
         # if os.path.exists(save_dir):
         #     shutil.rmtree(save_dir)
         # os.mkdir(save_dir)

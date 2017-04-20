@@ -71,7 +71,7 @@ class Dataset(object):
 
 class Model(object):
 
-    FILE_PATH = './store/model.h5'
+    FILE_PATH = 'model/model.h5'
 
     def __init__(self):
         self.model = None

@@ -43,7 +43,7 @@ def traverse_dir(path):
         if os.path.isdir(abs_path):  # dir
             traverse_dir(abs_path)
         else:                        # file
-            if file_or_dir.endswith('.jpg'):
+            if file_or_dir.endswith('.jpg') or file_or_dir.endswith('.BMP') or file_or_dir.endswith('.bmp'):
                 image = read_image(abs_path)
                 images.append(image)
                 labels.append(path)
@@ -54,8 +54,13 @@ def traverse_dir(path):
 def read_image(file_path):
     image = cv2.imread(file_path)
     image = resize_with_pad(image, IMAGE_SIZE, IMAGE_SIZE)
-
-    return image
+    # image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    # ret, image = cv2.threshold(image, 127, 255, cv2.THRESH_BINARY)
+    # return image.ravel()
+    # print(type(image.flat[0:]))
+    # print(image.flat[0:].shape)
+    return image.flat[0:]
+    # return image
 
 
 def extract_data(path):

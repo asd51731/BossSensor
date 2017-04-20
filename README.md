@@ -1,60 +1,23 @@
-# BossSensor
-Hide your screen when your boss is approaching.
+# 说明
+程序修改自https://github.com/Hironsan/BossSensor.git,用来自己测试一下
 
-## Demo
-The boss stands up. He is approaching.
-
-![standup](https://github.com/Hironsan/BossSensor/blob/master/resource_for_readme/standup.jpg)
-
-When he is approaching, the program fetches face images and classifies the image.
- 
-![approaching](https://github.com/Hironsan/BossSensor/blob/master/resource_for_readme/approach.jpg)
-
-If the image is classified as the Boss, it will monitor changes.
-
-![editor](https://github.com/Hironsan/BossSensor/blob/master/resource_for_readme/editor.jpg)
-
-## Requirements
-
-* WebCamera
-* Python3.5
-* OSX
-* Anaconda
-* Lots of images of your boss and other person image
-
-Put images into [data/boss](https://github.com/Hironsan/BossSensor/tree/master/data/boss) and [data/other](https://github.com/Hironsan/BossSensor/tree/master/data/other).
-
-## Usage
-First, Train boss image.
-
-```
-$ python boss_train.py
-```
+# 环境
+本程序可以在python2.7下跑通,有些警告,但是可以运行.
+照片采集使用笔记本自带摄像头(效果不好~~)
+tensorflow:0.12
+需要安装opencv,hdf5,keras等,keras后端使用tensorflow
+使用os:ubuntu15.04
 
 
-Second, start BossSensor. 
+# 程序说明
+* camera_reader.py : 用于从摄像头拍摄照片,设置为采集10s,将采集的照片存放到read_pic/pic,opencv识别出的人脸存放在read_pic/_faces
+* boss_train.py : 训练模型,要识别的人脸图片放在data/boss下,其他人脸图片放在data/other下
+* camera_reader.py : 利用摄像头识别人脸,如果是输出"boss come ...",不是输出"boss not come ..."
+* model : 存放训练好的模型
+* read_pic : 存放摄像头采集的目标图片,pic存放整个图片,_faces存放pic中图片识别出的人脸,处于提交目录的目的,在里面放了一个图片
 
-```
-$ python camera_reader.py
-```
-
-## Install
-Install OpenCV, PyQt4, Anaconda.
-
-```
-conda create -n venv python=3.5
-source activate venv
-conda install -c https://conda.anaconda.org/menpo opencv3
-conda install -c conda-forge tensorflow
-pip install -r requirements.txt
-```
-
-Change Keras backend from Theano to TensorFlow. 
-
-## Licence
-
-[MIT](https://github.com/Hironsan/BossSensor/blob/master/LICENSE)
-
-## Author
-
-[Hironsan](https://github.com/Hironsan)
+# 步骤
+1. 运行pic_reader.py采集要识别的人脸图片
+2. 将read_pic/_faces/* 转移到 data/boss下,将其他训练的人脸数据存放到 data/other下
+3. 运行boss_train.py 进行模型训练
+4. 运行camera_reader.py,查看模型预测情况
